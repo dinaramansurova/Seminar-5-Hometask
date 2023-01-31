@@ -5,19 +5,26 @@
 
 // [-4, -6, 89, 6] -> 0
 
+void InputArray(int[] array)
+{
+  for (int i = 0; i < array.Length; i++)
+    array[i] = new Random().Next(1, 101);
+}
+
+
+int SummaOddInArray(int[] array)
+{
+    int summa = 0;
+    for (int i = 1; i < array.Length; i+=2)
+      summa = summa + array[i];
+    return summa;
+}
+
+
 Console.Clear();
-Console.Write("Введите кол-во элементов массива: ");
+Console.Write("Введите кол-во элементов: ");
 int n = Convert.ToInt32(Console.ReadLine());
 int[] array = new int[n];
-for (int i = 0; i < array.Length; i++)
-array[i] = new Random().Next(0, 11);
-
-Console.WriteLine($"Массив: [{string.Join(", ", array)}]");
-
-int sum = 0;
-for (int i = 0; i < array.Length; i++)
-{
-if (array[i] % 2 == 1)
-sum += array[i];
-}
-Console.WriteLine($"Сумма нечетных чисел = {sum}");
+InputArray(array);
+Console.WriteLine($"Начальный массив: [{string.Join(", ", array)}]");
+Console.WriteLine($"Результат: {SummaOddInArray(array)}");
